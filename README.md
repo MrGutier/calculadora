@@ -7,4 +7,4 @@
 >Luego ejecuta: npm run start
 
 
-![Imajen del funcionamiento de la aplicación](/assets/captura.jpg)
+<img src="/assets/captura.jpg" height="200"/>
