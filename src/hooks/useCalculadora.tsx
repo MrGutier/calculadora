@@ -133,6 +133,7 @@ export const useCalculadora = () =>{
     }
 
     const resultado = () => {
+        Vibration.vibrate();
         const [primerValor, operacion, segundoValor] = formula.split(' ');
 
         const num2 = Number(segundoValor);
