@@ -1,4 +1,5 @@
 import {useRef, useState, useEffect} from 'react';
+import { Alert,Vibration } from 'react-native';
 
 enum Operadores {
     sumar = '+',
@@ -32,6 +33,7 @@ export const useCalculadora = () =>{
     },[formula]);
 
     const clean = () => {
+        Vibration.vibrate()
         setFormula('0');
         setNumero('0');
         setNumeroAnterior('0');
@@ -39,6 +41,7 @@ export const useCalculadora = () =>{
     }
 
     const cambiarSigno = () => {
+        Vibration.vibrate()
         if (numero.includes('-')) {
             return setNumero(numero.replace('-',''));
         } else {
@@ -48,6 +51,7 @@ export const useCalculadora = () =>{
     }
 
     const borrarDigito = () => {
+        Vibration.vibrate()
         let signo = '';
         let numeroTemporal = numero;
 
@@ -63,6 +67,7 @@ export const useCalculadora = () =>{
     }
 
     const establecerUltimoNumero = () => {
+        Vibration.vibrate()
         resultado();
         if (numero.endsWith('.')) {
             setNumeroAnterior(numero.slice(0,-1));
@@ -71,27 +76,34 @@ export const useCalculadora = () =>{
         setNumero('0');
     }
 
-    const operacionDividir = () => {
+    
+    const operar = (operador:string)=>{
         establecerUltimoNumero();
-        UltimaOperacion.current = Operadores.dividir;
-    }
 
-    const operacionMultiplicar = () => {
-        establecerUltimoNumero();
-        UltimaOperacion.current = Operadores.multiplicar;
-    }
+        switch (operador){
+            case "+":
+                UltimaOperacion.current = Operadores.sumar;
+                return;
+            case "-":
+                
+                UltimaOperacion.current = Operadores.restar;
+                return;
+            case "*":
+                
+                UltimaOperacion.current = Operadores.multiplicar;
+                return;
+            case ":":
+                
+                UltimaOperacion.current = Operadores.dividir;
+                return;
+        }
+            
+        
 
-    const operacionRestar = () => {
-        establecerUltimoNumero();
-        UltimaOperacion.current = Operadores.restar;
-    }
-
-    const operacionSumar = () => {
-        establecerUltimoNumero();
-        UltimaOperacion.current = Operadores.sumar;
     }
 
     const calcularResultado = () => {
+
         const [primerValor, operacion, segundoValor] = formula.split(' ');
 
         const num1 = Number(primerValor);
@@ -110,6 +122,9 @@ export const useCalculadora = () =>{
                 return num1 * num2;
 
             case Operadores.dividir:
+                if(num2==0){
+                    return "";
+                }
                 return num1 / num2;
 
             default:
@@ -118,14 +133,24 @@ export const useCalculadora = () =>{
     }
 
     const resultado = () => {
+        const [primerValor, operacion, segundoValor] = formula.split(' ');
+
+        const num2 = Number(segundoValor);
+        if(UltimaOperacion.current == Operadores.dividir && num2==0){
+            UltimaOperacion.current = undefined;
+            const resultado = calcularResultado();
+            setFormula(`${resultado}`);
+            Alert.alert("No permitido","No se puede dividir entre cero");
+        }else{
         const resultado = calcularResultado();
         setFormula(`${resultado}`);
         UltimaOperacion.current = undefined;
         setNumeroAnterior('0');
     }
+    }
 
     const construirNumero = (teclaNumero: string) => {
-
+        Vibration.vibrate()
         //Verificar si se escribe el punto decimal
         if (numero.includes('.') && teclaNumero === '.') return;
         
@@ -158,11 +183,8 @@ export const useCalculadora = () =>{
         clean,
         cambiarSigno,
         borrarDigito,
-        operacionDividir,
-        operacionMultiplicar,
-        operacionRestar,
-        operacionSumar,
         calcularResultado,
-        resultado
+        resultado,
+        operar
     }
 };
