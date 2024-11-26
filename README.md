@@ -7,4 +7,4 @@
 >Luego ejecuta: npm run start
 
 
-<img src="/assets/captura.jpg" height="1200"/>
+<img src="/assets/captura.jpg" height="600"/>
