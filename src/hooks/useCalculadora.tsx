@@ -1,6 +1,6 @@
 import {useRef, useState, useEffect} from 'react';
 import { Alert,Vibration } from 'react-native';
-
+import * as Haptics from 'expo-haptics';
 enum Operadores {
     sumar = '+',
     restar = '-',
@@ -33,7 +33,7 @@ export const useCalculadora = () =>{
     },[formula]);
 
     const clean = () => {
-        Vibration.vibrate()
+        Haptics.impactAsync();
         setFormula('0');
         setNumero('0');
         setNumeroAnterior('0');
@@ -41,7 +41,7 @@ export const useCalculadora = () =>{
     }
 
     const cambiarSigno = () => {
-        Vibration.vibrate()
+        Haptics.impactAsync();
         if (numero.includes('-')) {
             return setNumero(numero.replace('-',''));
         } else {
@@ -51,7 +51,7 @@ export const useCalculadora = () =>{
     }
 
     const borrarDigito = () => {
-        Vibration.vibrate()
+        Haptics.impactAsync();
         let signo = '';
         let numeroTemporal = numero;
 
@@ -67,7 +67,7 @@ export const useCalculadora = () =>{
     }
 
     const establecerUltimoNumero = () => {
-        Vibration.vibrate()
+        Haptics.impactAsync();
         resultado();
         if (numero.endsWith('.')) {
             setNumeroAnterior(numero.slice(0,-1));
@@ -133,16 +133,18 @@ export const useCalculadora = () =>{
     }
 
     const resultado = () => {
-        Vibration.vibrate();
+        
         const [primerValor, operacion, segundoValor] = formula.split(' ');
 
         const num2 = Number(segundoValor);
         if(UltimaOperacion.current == Operadores.dividir && num2==0){
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
             UltimaOperacion.current = undefined;
             const resultado = calcularResultado();
             setFormula(`${resultado}`);
             Alert.alert("No permitido","No se puede dividir entre cero");
         }else{
+        Haptics.impactAsync();
         const resultado = calcularResultado();
         setFormula(`${resultado}`);
         UltimaOperacion.current = undefined;
@@ -151,7 +153,7 @@ export const useCalculadora = () =>{
     }
 
     const construirNumero = (teclaNumero: string) => {
-        Vibration.vibrate()
+        Haptics.impactAsync();
         //Verificar si se escribe el punto decimal
         if (numero.includes('.') && teclaNumero === '.') return;
         
