@@ -27,33 +27,33 @@ export default function App() {
       <StatusBar style="auto" />
 
     <View style={GlobalStyles.fila}>
-      <BotonOperacion label='C' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.miscelaneo]} onPress={clean}></BotonOperacion>
-      <BotonOperacion label='+/-' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.miscelaneo]} onPress={cambiarSigno}></BotonOperacion>
-      <BotonOperacion label='del' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.miscelaneo]} onPress={borrarDigito}></BotonOperacion>
-      <BotonOperacion label='/' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_calculo]} onPress={()=>operar(":")}></BotonOperacion>
+      <BotonOperacion label='C' buttonStyle={[GlobalStyles.miscelaneo]} onPress={clean}></BotonOperacion>
+      <BotonOperacion label='+/-' buttonStyle={[GlobalStyles.miscelaneo]} onPress={cambiarSigno}></BotonOperacion>
+      <BotonOperacion label='del' buttonStyle={[GlobalStyles.miscelaneo]} onPress={borrarDigito}></BotonOperacion>
+      <BotonOperacion label='/' buttonStyle={[GlobalStyles.boton_calculo]} onPress={()=>operar(":")}></BotonOperacion>
     </View>
     <View style={GlobalStyles.fila}>
-      <BotonOperacion label='7' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_numero]} onPress={() =>construirNumero('7')}></BotonOperacion>
-      <BotonOperacion label='8' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_numero]} onPress={() =>construirNumero('8')}></BotonOperacion>
-      <BotonOperacion label='9' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_numero]} onPress={() =>construirNumero('9')}></BotonOperacion>
-      <BotonOperacion label='x' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_calculo]} onPress={()=>operar("*")}></BotonOperacion>
+      <BotonOperacion label='7' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('7')}></BotonOperacion>
+      <BotonOperacion label='8' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('8')}></BotonOperacion>
+      <BotonOperacion label='9' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('9')}></BotonOperacion>
+      <BotonOperacion label='x' buttonStyle={[GlobalStyles.boton_calculo]} onPress={()=>operar("*")}></BotonOperacion>
     </View>
     <View style={GlobalStyles.fila}>
-      <BotonOperacion label='4' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_numero]} onPress={() =>construirNumero('4')}></BotonOperacion>
-      <BotonOperacion label='5' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_numero]} onPress={() =>construirNumero('5')}></BotonOperacion>
-      <BotonOperacion label='6' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_numero]} onPress={() =>construirNumero('6')}></BotonOperacion>
-      <BotonOperacion label='-' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_calculo]} onPress={()=>operar("-")}></BotonOperacion>
+      <BotonOperacion label='4' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('4')}></BotonOperacion>
+      <BotonOperacion label='5' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('5')}></BotonOperacion>
+      <BotonOperacion label='6' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('6')}></BotonOperacion>
+      <BotonOperacion label='-' buttonStyle={[GlobalStyles.boton_calculo]} onPress={()=>operar("-")}></BotonOperacion>
     </View>
     <View style={GlobalStyles.fila}>
-      <BotonOperacion label='1' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_numero]} onPress={() =>construirNumero('1')}></BotonOperacion>
-      <BotonOperacion label='2' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_numero]} onPress={() =>construirNumero('2')}></BotonOperacion>
-      <BotonOperacion label='3' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_numero]} onPress={() =>construirNumero('3')}></BotonOperacion>
-      <BotonOperacion label='+' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_calculo]} onPress={()=>operar("+")}></BotonOperacion>
+      <BotonOperacion label='1' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('1')}></BotonOperacion>
+      <BotonOperacion label='2' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('2')}></BotonOperacion>
+      <BotonOperacion label='3' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('3')}></BotonOperacion>
+      <BotonOperacion label='+' buttonStyle={[GlobalStyles.boton_calculo]} onPress={()=>operar("+")}></BotonOperacion>
     </View>
     <View style={GlobalStyles.fila}>
-      <BotonOperacion label='0' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_grande,GlobalStyles.boton_numero]} onPress={() =>construirNumero('0')}></BotonOperacion>
-      <BotonOperacion label='.' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana ,GlobalStyles.boton_numero]} onPress={() =>construirNumero('.')}></BotonOperacion>
-      <BotonOperacion label='=' buttonStyle={[GlobalStyles.boton,GlobalStyles.letra_mediana,GlobalStyles.boton_calculo]} onPress={resultado}></BotonOperacion>
+      <BotonOperacion label='0' buttonStyle={[GlobalStyles.boton_grande,GlobalStyles.boton_numero]} onPress={() =>construirNumero('0')}></BotonOperacion>
+      <BotonOperacion label='.' buttonStyle={[GlobalStyles.boton_numero]} onPress={() =>construirNumero('.')}></BotonOperacion>
+      <BotonOperacion label='=' buttonStyle={[GlobalStyles.boton_calculo]} onPress={resultado}></BotonOperacion>
     </View>
     </View>
 

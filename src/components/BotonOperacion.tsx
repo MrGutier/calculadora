@@ -13,7 +13,7 @@ export const BotonOperacion = ({label,buttonStyle, onPress}:Props) => {
     return (
         <Pressable>
             <Text 
-                style={buttonStyle}
+                style={[GlobalStyles.boton,GlobalStyles.letra_mediana,buttonStyle]}
                 onPress={onPress}>{label}</Text>
         </Pressable>
     )
